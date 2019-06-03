@@ -1,0 +1,23 @@
+{
+  "name": "healthy_vibrations",
+  "version": "1.0.0",
+  "description": "simple blog, front_end, back_end, CMS written with handlebars, react, node and express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd app & node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Orsunmigbare/healthy_vibrations.git"
+  },
+  "author": "Gbare Oyekan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Orsunmigbare/healthy_vibrations/issues"
+  },
+  "homepage": "https://github.com/Orsunmigbare/healthy_vibrations#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

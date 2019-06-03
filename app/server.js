@@ -7,6 +7,6 @@ app.use(express.static(path.join(__dirname,'..' ,'public')));
 
 app.use('/',routes)
 app.set('port', port);
-app.listen(3000, ()=>{
+app.listen(port, ()=>{
     console.log(`Server started at port ${port}`)
 })

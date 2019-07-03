@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title> Create Post</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="css/main.css" rel = "stylesheet">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/e0816649fa.js"></script>
+    </head>
+    <body>
+        <div class="class-wrap">
+                <div class="site-mobile-menu">
+                  <div class='nav-container w-100'>
+                      <div class="avatar-wrap">
+                          <img src="images/user.png" class="avatar d-block">
+                          <span class="username">   
+                              John Doe
+                          </span>
+                      </div>
+                    <ul class="nav">
+                        <li class="nav-item text-center">
+                        <a href = '#' class='active'> <i class="fas fa-plus text-icon "></i> Create article</a></li>
+                        <li class="nav-item text-center">
+                                <a href = '#'><i class="far fa-edit text-icon"></i>Edit article</a>
+                        </li>
+                        <li class="nav-item text-center">
+                                <a href = '#'><i class="far fa-trash-alt text-icon"></i>Delete article</a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="main-content-area">
+                        <h1> Upload images for the article</h1>
+                        <div class="card w-100">
+                            <h2>Choose Images</h2>
+                            <div class='card-item'>
+                                <div class="images-display row">
+                                    <div class="col-sm-12 col-md-6 col-xl-3 img-wrap">
+                                         <img src="images/sample1.jpg"  class="w-100" alt="article-image" />
+                                         <div class="img-cancel text-center">
+                                                <i class="fas fa-times text-icon "> </i><span> Cancel</span>
+                                         </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-xl-3 img-wrap">
+                                            <img src="images/sample2.jpg"  class="w-100" alt="article-image" />
+                                            <div class="img-cancel text-center">
+                                                    <i class="fas fa-times text-icon "></i> <span> Cancel</span>
+                                             </div>
+                                     </div>
+                                     <div class="col-sm-12 col-md-6 img-wrap col-xl-3">
+                                            <img src="images/sample3.jpg"  class="w-100" alt="article-image" />
+                                            <div class="img-cancel text-center">
+                                                    <i class="fas fa-times text-icon "></i> <span> Cancel</span>
+                                             </div>
+                                       </div>
+                                       <div class="col-sm-12 col-md-6 img-wrap col-xl-3">
+                                            <img src="images/sample4.jpg"  class="w-100" alt="article-image" />
+                                            <div class="img-cancel text-center">
+                                                    <i class="fas fa-times text-icon "></i> <span> Cancel</span>
+                                             </div>
+                                       </div>
+                                </div>
+                                <input  type="file" name="pics" class="my-4 "accept="image/*" multiple/>
+                            </div>
+                        </div>
+                        <div class="btn-wrap">
+                                <a href="#" class="btn btn-primary d-inline-block btn-next"> Previous </a>
+                                <a href="#" class="btn btn-primary d-inline-block btn-next"> Next </a>
+                        </div>
+                </div>
+                </div>
+        </body>
+        </html>

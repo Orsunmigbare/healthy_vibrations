@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600i,800&display=swap');
+
+// color-declaration
+$primary-color: #5e6073;
+$primary-color-light: #ffffff;
+
+// font-declaratiion
+$primary-font-normal:  'Muli', sans-serif;
+// heading
+%headings{
+    font-family: $primary-font-normal;
+    font-weight: 600i;
+} 
+%select-inputs{
+    border-radius: 0;
+    padding: .36em;
+    font-family: $primary-font-normal;
+    border-color: #e7e2e2;
+    border: none;
+    letter-spacing: .0264em;
+    font-size: .9em !important;
+    // -webkit-box-shadow: 0px 0px 4px 0px rgba(10,10,10,0.12);
+    // -moz-box-shadow: 0px 0px 4px 0px rgba(10,10,10,0.12);
+    //  box-shadow: 0px 0px 4px 0px rgba(10,10,10,0.12);
+     -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+     -ms-transition: all .2s ease-in-out;
+     -o-transition: all .2s ease-in-out;
+     transition: all .2s ease-in-out;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+    -o-appearance: none;
+    background-color: inherit
+     
+}
+
+select {
+    @extend %select-inputs
+}
+select + i.fa {
+    margin-top: -30px;
+    margin-right: 5px;
+    font-size: .7em;
+    /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+    pointer-events: none;
+    /* everything after this is just to cover up the original arrow */
+    /* (for browsers that don't support the syntax used above) */
+    background-color: inherit;
+    padding-right: 5px;
+  }
+.select{
+        display: inline-block;
+        background-color: #e7e2e2;
+        padding: .1em;
+        border-radius: 3px;
+  }
+// .select::after{
+//    content: " ";
+//    display: block;
+//    height: 2px;
+//    background-color: $primary-color;
+//    width: 100%;
+// } 
+
+%text-inputs{
+  border: 1px #c4c1c1 solid !important;
+  font-family: $primary-font-normal;
+  padding: .432em;
+  font-size: .864em !important;
+  background-color: #e7e2e2;
+  border-radius: 3px;
+  -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+input {
+    @extend  %text-inputs
+}
+
+input:focus{
+    outline-offset: 0 !important;
+    outline: rgba(143, 151, 160, 0.5)  !important ;
+    background-color: #e8f0fe;
+}
+h1 {
+    @extend %headings;
+    font-size: 1.44em !important;
+}
+
+h2{
+    @extend %headings;
+    font-size: 1.224em  !important;
+    padding: .144em 0;
+}
+h3{
+    @extend %headings;
+    font-size: 1.08em !important;
+    padding: .18em 0;
+}
+.btn {
+            background-color: $primary-color;
+            display: inline-block;
+            letter-spacing: .07em;
+            font-size: .75em !important;
+            margin: 0 3px;
+            padding: .5em 1.08em;;
+            min-width: 5.76em;
+            border-radius: 2px;
+            border: none !important;
+            color: #fff;
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+}
+
+btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle , .form-control{
+    color: #fff;
+    background-color: #91a2b4 !important;
+    border-color: #91a2b4 !important;
+}
+btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus, btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus ,.btn-primary.focus, .btn-primary:focus{
+    box-shadow: 0 0 0 0.2rem rgba(143, 151, 160, 0.5) !important;
+} 
+
+html{
+    height: 100%;
+    background-color:  #fcfcfc;
+}
+
+body {
+    font-family: $primary-font-normal;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  
+
+a:hover{
+    text-decoration: none;
+}
+  .class-wrap{
+      height: 100%;
+  }
+// mobile nav
+  .site-mobile-menu{
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+      background-color: $primary-color;
+      height: 100%;
+      position: fixed;
+      width: 216px;
+      padding: 0 9px;
+      -webkit-box-shadow: 2px 0px 3px 0px rgba(153,145,153,0.66);
+      -moz-box-shadow: 2px 0px 3px 0px rgba(153,145,153,0.66);
+      box-shadow: 2px 0px 3px 0px rgba(153,145,153,0.66);
+        .avatar-wrap{
+            margin-top: 40px;
+            .avatar{
+                height: 92px;
+                width: 92px;
+                margin: auto;
+                margin-bottom: 18px;
+            }
+            .username{
+                display: block;
+                font-size: .891rem;
+                color: $primary-color-light;
+                text-align: center;
+            }
+        }
+        .nav{
+            display: block !important;
+            align-items:  center;
+            margin: auto;
+            margin-top: 72px;
+        }
+        .nav-item{
+            color: $primary-color-light;
+            font-size:.864em;
+            font-weight: 400;
+            border-bottom: 1.44px solid $primary-color-light;
+                .text-icon{
+                    font-size: .9em;
+                    padding-right: .45em;
+                }
+        }
+        .nav-item a{
+            color: $primary-color-light;
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: .45em;
+        }
+        .nav-item a:hover > .text-icon{
+            color: #fff78f;
+        }
+        .nav-item a.active {
+            color: #fff78f;
+        }
+  }
+  .main-content-area{
+    height: 100%;
+    background-color: #fcfcfc;
+    margin-left: 220px;
+    padding: 1em 2.7em;
+     .card{
+         border-radius: 8.6px;
+          border: none;
+          padding: .72em 1.8em;
+          width: fit-content;
+          min-width: 360px;
+         -webkit-box-shadow: 0px 0px 4px 0px rgba(10,10,10,0.1);
+         -moz-box-shadow: 0px 0px 4px 0px rgba(10,10,10,0.1);
+         box-shadow: 0px 0px 4px 0px rgba(10,10,10,0.1);
+         margin-top: 54px ;
+        .card-item{
+            margin-bottom: 15.4px;
+                .images-display img{
+                    margin: 10px 0;
+                    border-radius: 5px;
+                    -webkit-box-shadow: 0px 3px 5px 2px rgba(0,0,0,0.19);
+                    -moz-box-shadow: 0px 3px 5px 2px rgba(0,0,0,0.19);
+                    box-shadow: 0px 3px 5px 2px rgba(0,0,0,0.19);
+                }
+                .img-wrap{
+                    position: relative;
+                        .img-cancel{
+                                background-color: #5e6073;
+                                color: #fff;
+                                position: absolute;
+                                right: 5;
+                                top: 30px;
+                                padding: .5em;
+                                border-radius: 4px;
+                                left: 30px;
+                                opacity: .8;
+                                cursor: pointer;
+                                -webkit-transition: all .2s ease-in-out;
+                                -moz-transition: all .2s ease-in-out;
+                                -ms-transition: all .2s ease-in-out;
+                                -o-transition: all .2s ease-in-out;
+                                transition: all .2s ease-in-out;
+                        }
+                        .img-cancel:hover{
+                            opacity: 1;
+                        }
+                }
+        }
+        .tag{
+            background-color: $primary-color;
+            display: inline-block;
+            margin: 0 3.6px 7.2px 0;
+            padding: .5em 1em;;
+            min-width: 5.8em;
+            border-radius: 3px;
+            color: #fff;
+            font-size: .9em;
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        }
+     }
+     
+     .btn-next{
+        padding: .5em 1.5em !important;
+        margin-top: 30px;
+        background-color: $primary-color;
+
+    }
+    .input-wrap{
+        width: fit-content;
+    }
+    
+  }
+}

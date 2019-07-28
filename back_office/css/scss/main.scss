@@ -145,6 +145,8 @@ a:hover{
 }
   .class-wrap{
       height: 100%;
+      width: 100%;
+      position: absolute;
   }
 // mobile nav
   .site-mobile-menu{
@@ -156,6 +158,7 @@ a:hover{
       position: fixed;
       width: 216px;
       padding: 0 9px;
+      z-index: 1000000;
       -webkit-box-shadow: 2px 0px 3px 0px rgba(153,145,153,0.66);
       -moz-box-shadow: 2px 0px 3px 0px rgba(153,145,153,0.66);
       box-shadow: 2px 0px 3px 0px rgba(153,145,153,0.66);
@@ -205,10 +208,13 @@ a:hover{
         }
   }
   .main-content-area{
-    height: 100%;
+    // height: 100%;
     background-color: #fcfcfc;
     margin-left: 220px;
     padding: 1em 2.7em;
+    position: absolute;
+    right: 0;
+    left: 0;
      .card{
          border-radius: 8.6px;
           border: none;
@@ -251,6 +257,20 @@ a:hover{
                             opacity: 1;
                         }
                 }
+                .select-table {
+                    border-radius: 7px;
+                    .table-header{
+                        background-color: $primary-color;
+                        color: white;
+                    }
+                   tbody >tr{ 
+                    cursor: pointer;
+                   }
+                   .selected{
+                       background-color:#888a9d;
+                       color: white;
+                   }
+                }
         }
         .tag{
             background-color: $primary-color;
@@ -265,6 +285,7 @@ a:hover{
             -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
             box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         }
+        
      }
      
      .btn-next{
@@ -279,3 +300,23 @@ a:hover{
     
   }
 }
+
+// react transition animations
+.page-enter {
+    opacity: 0;
+  }
+  
+  .page-enter-active {
+    opacity: 1;
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+  .page-exit {
+    opacity: 1;
+  }
+  
+  .page-exit-active {
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+  }
+  

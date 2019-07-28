@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
 const users = require('../models/users');
 const {keys: {password : secret}} = require('../config');
-const {generate_token} = require('../util')
+const {generate_token, hash_input, send_response} = require('../util')
 
 const findUser =({field, value})=>{
      return new Promise( async (resolve, reject)=>{
@@ -21,33 +21,37 @@ const actions = {
  sign_up : async (req, res, next)=>{
       
     let jwt_token, {username, password, firstname, lastname, email} = req.body;
-
+    
     //  check if email already exist
     let userExists = !! await findUser({field:'email', value: email})
-    if (userExists) res.status(400).json({message: 'Username already taken.. try out another one'});
+    if (userExists) send_response(res,{status:'failed',message:'Username already taken.. try out another one',stat_code: 400, data: ''});
    
 
     //  generate random salt round
      const salt = Math.floor(Math.random() * 10);
-
-     bcrypt.hash(password, salt, async (err, hash)=>{
-         if(err){ return jwt_token = false}
-       await  users.create({
-              username,
-              password : hash,
-              firstname,
-              lastname,
-              email
-         })
-         .then( async ({username,password,email})=>{
-            //  generate jwt
-                req.jwt_token = await generate_token({data: {username,password,email}, secret});
-                next()
-            })
-         .catch(err=>{
-             if(err.code === 11000) res.status(400).json({message: 'Username already taken.. try out another one'})
-         })
-     })
+      hash_input(password)
+      .then(hash=>{
+        users.create({
+            username,
+            password : hash,
+            firstname,
+            lastname,
+            email,
+       })
+       .then( async ({username,password,email,_id})=>{
+          //  generate jwt
+              req.jwt_token = await generate_token({data: {username,password,email}, secret});
+              req.id = _id;
+              next()
+          })
+       .catch(err=>{
+           if(err.code === 11000) send_response(res,{status:'failed',message:'Username already taken.. try out another one',stat_code: 400, data: ''});
+       })
+      })
+      .catch(err=>{
+         req.jwt_token = false;
+         next()
+      });
     
      
 },
@@ -57,11 +61,11 @@ const actions = {
  */
 login: async(req,res,next)=>{
    let {username, password, email} = req.body, user, jwt_token;
-    
+   console.log(req.body)
    //    find user
    user = await findUser({field: 'username', value: username})
    console.log(user)
-   if (!user) return res.status(404).json({message: "Username or password is incorrect"});
+   if (!user) return send_response(res,{status:'failed',message:'Username or password is incorrect',stat_code: 404, data: ''});
    const {password: hashed_password} = user;
 
    bcrypt.compare(password, hashed_password, ( err,same)=>{
@@ -70,6 +74,7 @@ login: async(req,res,next)=>{
          if(err) jwt_token= false;
          jwt_token = token;
                 req.jwt_token = jwt_token;
+                req.id = user._id;
                 next()
        })
    })

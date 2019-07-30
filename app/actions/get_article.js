@@ -1,4 +1,4 @@
-const  {verify_token, convert_string_to_array, get_landing_and_images} = require('../util');
+const  {verify_token, convert_string_to_array, get_landing_and_images, send_response} = require('../util');
 const articles = require('../models/artilces');
 
 const actions = {
@@ -13,8 +13,9 @@ const actions = {
             }
             console.log(articles)
             console.log('article found here')
-            message.articles = articles.map(article=>({title: article.title, id:article._id, category: article.category, sub_category: article.sub_category}));
+            message.data = articles.map(article=>({title: article.title, id:article._id, category: article.category, sub_category: article.sub_category}));
             message.status = 'success';
+            message.message = "Retrieved data succesfully"
             req.message = message;
             next();
         }); 
@@ -33,7 +34,7 @@ const actions = {
                   }
                   
               fields.forEach(field=>{
-                  message.message[field] = article[field]
+                  message.data[field] = article[field]
               })
               message.status = 'success';
               req.message = message;

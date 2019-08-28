@@ -21,15 +21,30 @@ const actions = {
               return  send_response(res,{status:'failed',message:'There was an error creating the article, please try again',stat_code: 400, data: ''});
             }) 
     },
+    update_article_description : async (req,res,next)=>{
+        let status = verify_token(req,res);
+        if(!status.status) return;
+        let {category, sub_category, tags, title, id} = req.body;
+        articles.updateOne({_id : id}, {$set : {category, sub_category, tags, title}})
+        .then(article=>{
+            req.message = {status: 'success', message: "updated article succesfully", stat_code: 200}
+            next()
+        })
+        .catch(err =>{
+            return  send_response(res,{status:'failed',message:'There was an error updating the article, please try again',stat_code: 400, data: ''});
+        })
+
+    },
 //    save article html
     save_content  : async (req,res,next)=>{
         let status = verify_token(req,res);
         if(!status.status) return;
-        let {paragraphs, article_id} = req.body;
-        console.log(paragraphs)
-        articles.findOneAndUpdate({_id: article_id}, {$set : {paragraphs: convert_string_to_array(paragraphs)}}, {useFindAndModify: false})
+        let {paragraphs, id} = req.body;
+        console.log(id, 'article id')
+        articles.updateOne({_id: id}, {$set : {paragraphs: convert_string_to_array(paragraphs)}}, {useFindAndModify: false})
         .then(article=>{
             req.message = {status: 'success', message: "saved article content succesfully"};
+            console.log(article)
             next();
         })
         .catch(err=>{
@@ -37,6 +52,7 @@ const actions = {
         })
         
     },
+   
     // save image online
     image_parser :async (req,res,next)=>{
         let status = verify_token(req,res);
@@ -63,7 +79,7 @@ const actions = {
     // save image link to db
     save_image: (req,res,next)=>{
         let {id} = req.body, images = [];
-
+        console.log(id)
         images = req.files.map(file=>({url: file.secure_url, name: file.originalname}));
         let imageObj =  get_landing_and_images(images)
         console.log(imageObj)

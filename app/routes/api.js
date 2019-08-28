@@ -40,13 +40,19 @@ Router.post('/save_article_images', createAction.image_parser, createAction.save
     send_response(res,{...req.message});
 })
 
-
-
-// get actions
-Router.get('/get_articles_list/:writer_id', getAction.get_articles_list, (req,res,next)=>{
+Router.post('/update_article_description', createAction.update_article_description, (req,res)=>{
     send_response(res,{...req.message});
 })
 
+
+// get actions
+
+Router.get('/get_articles_list/:writer_id', getAction.get_articles_list, (req,res,next)=>{
+    send_response(res,{...req.message});
+})
+Router.get('/get_article/:article_id', getAction.get_article(), (req,res,next)=>{
+    send_response(res,{...req.message});
+})
 Router.get('/get_article_description/:article_id', getAction.get_article(['category','sub_category','tags','title']), (req,res,next)=>{
     send_response(res,{...req.message});
 })

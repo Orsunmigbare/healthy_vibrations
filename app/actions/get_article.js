@@ -32,10 +32,15 @@ const actions = {
                       message.status = 'failed';
                      return send_response(res,{...message, stat_code: 404, data: ''});
                   }
-                  
-              fields.forEach(field=>{
-                  message.data[field] = article[field]
-              })
+            if(fields){
+                fields.forEach(field=>{
+                    message.data[field] = article[field]
+                })
+            }else{
+                message.data = article;
+            }
+
+              
               message.status = 'success';
               req.message = message;
               next()

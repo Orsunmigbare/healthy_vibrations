@@ -9,6 +9,7 @@ var article_schema = new Schema({
         // sub_category: Schema.Types.ObjectId,
         category: String,
         sub_category: String,
+        date: Number,
         paragraphs: [],
         tags: [],
         landing_image: String,
